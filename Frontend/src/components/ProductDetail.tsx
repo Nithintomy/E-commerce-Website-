@@ -52,7 +52,7 @@ function ProductDetail({ productId }: ProductDetailProps) {
       const productData = {
         productName,
         description,
-        price: parseFloat(price), // Parse price to a number
+        price: parseFloat(price), 
         featured,
       };
       const response = await axiosInstance.put(

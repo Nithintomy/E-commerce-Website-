@@ -39,9 +39,9 @@ function ProductCard({ product }: ProductCardProps) {
             </p>
 
             <div className="text-gray-900 font-bold text-lg">
-              Price: {product.price} {/* Display price */}
+              Price: {product.price} 
               <span className="text-xs text-gray-600"> /-</span>{" "}
-              {/* Indicate currency */}
+              
             </div>
             <div className="card-actions justify-end">
               {product.featured ? (

@@ -15,7 +15,6 @@ function Register() {
   const isStrongPassword = (password: string): boolean => {
     return password.length >= 8;
   };
-  const [errorMessage, setErrorMessage] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -56,12 +55,8 @@ function Register() {
       }, 3000);
     
     } catch (error:any) {
-      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message);
       
-        setErrorMessage(error.response.data.message);
-      } else {
-        console.error('Signup failed:', error);
-      }
     }
   };
  
@@ -72,7 +67,7 @@ function Register() {
         <div className="md:w-1/2 px-8">
           <h2 className="font-bold text-3xl text-[#002D74] mb-4">Register</h2>
           <p className="text-sm text-[#002D74] mb-6">
-            Create a new account to access all features.
+            Create a new account
           </p>
           <form onSubmit={(e) => handleSubmit(e)} className="flex flex-col gap-4">
             <input

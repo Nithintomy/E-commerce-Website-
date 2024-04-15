@@ -10,7 +10,7 @@ import axiosInstance from "../../services/axiosInstance";
 
 
 function ShoppingCart() {
-  const [cartItems, setCartItems] = useState<any[]>([]); // Update the type to any[]
+  const [cartItems, setCartItems] = useState<any[]>([]); 
   const token = useSelector(selectToken);
   const dispatch = useDispatch();
 
@@ -31,7 +31,7 @@ function ShoppingCart() {
   }, [token]);
 
   const totalCost = cartItems.reduce(
-    (total, item) => total + (item?.product?.price || 0) * (item?.quantity || 0), // Ensure properties are accessed safely
+    (total, item) => total + (item?.product?.price || 0) * (item?.quantity || 0),
     0
   );
 
@@ -54,13 +54,13 @@ function ShoppingCart() {
   };
   
 
-  const handleIncrementQuantity = async (itemId: string) => { // Add type for itemId
+  const handleIncrementQuantity = async (itemId: string) => { 
     try {
       const updatedCartItems = cartItems.map((item) => {
         if (item._id === itemId) {
           return {
             ...item,
-            quantity: (item.quantity || 0) + 1, // Ensure quantity is accessed safely
+            quantity: (item.quantity || 0) + 1, 
           };
         }
         return item;
@@ -84,13 +84,13 @@ function ShoppingCart() {
     }
   };
 
-  const handleDecrementQuantity = async (itemId: string) => { // Add type for itemId
+  const handleDecrementQuantity = async (itemId: string) => { 
     try {
       const updatedCartItems = cartItems.map((item) => {
-        if (item._id === itemId && (item.quantity || 0) > 1) { // Ensure quantity is accessed safely
+        if (item._id === itemId && (item.quantity || 0) > 1) { 
           return {
             ...item,
-            quantity: (item.quantity || 0) - 1, // Ensure quantity is accessed safely
+            quantity: (item.quantity || 0) - 1, 
           };
         }
         return item;
@@ -139,8 +139,8 @@ function ShoppingCart() {
                 {cartItems?.length} Items
               </h2>
             </div>
-            {cartItems.map((item, index) => ( // Add index to map function
-              <div key={index} className="py-8 border-t border-gray-50"> {/* Use index as key */}
+            {cartItems.map((item, index) => ( 
+              <div key={index} className="py-8 border-t border-gray-50"> 
                 <div className="flex items-center">
                   <div className="w-1/4 flex justify-center">
                     <img
@@ -238,7 +238,7 @@ function ShoppingCart() {
                   </span>
                  
                   <span className="font-semibold text-sm">
-                    ${(item?.product?.price || 0) * (item?.quantity || 0)} {/* Ensure properties are accessed safely */}
+                    ${(item?.product?.price || 0) * (item?.quantity || 0)} 
                   </span>
                 </div>
               ))}

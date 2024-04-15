@@ -4,19 +4,23 @@ import { Link,useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, selectUser } from "../../features/userSlice/authSlice";
 import { selectCartCount } from "../../features/cartSlice/cartSlice";
+import toast from "react-hot-toast";
 
 function Navbar() {
   const user = useSelector(selectUser);
   const count = useSelector(selectCartCount);
   const dispatch = useDispatch();
   const navigate = useNavigate()
-  console.log(user?.userName, "user");
 
-  const handleLogout =()=>{
-    dispatch(logout())
-    navigate('/')
-  }
 
+  const handleLogout = () => {
+    dispatch(logout());
+    toast.success(`You have logged out successfully!`);
+    setTimeout(() => {
+      navigate('/');
+    }, 2000);
+  };
+  
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">

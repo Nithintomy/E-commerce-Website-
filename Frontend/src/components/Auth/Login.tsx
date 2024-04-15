@@ -32,9 +32,9 @@ const Login: React.FC = () => {
       setTimeout(() => {
         navigate('/');
       }, 2000);
-    } catch (error) {
-      console.error('Login failed:', error);
-      toast.error("Login failed. Please try again."); 
+    } catch (error:any) {
+      toast.error(error?.response?.data?.message);
+      
     }
   };
   
